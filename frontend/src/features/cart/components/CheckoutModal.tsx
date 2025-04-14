@@ -68,7 +68,6 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
         const deliveryData: DeliveryInfo = { name, email, address, city };
         const ccData: CreditCardInfo = { number: ccNumber.replace(/\s/g, ''), expiry, cvv };
         onSubmit({ delivery: deliveryData, cc: ccData });
-        // Limpiar formulario al enviar (opcional)
         // setName(''); setAddress(''); /* ... etc */ setCcNumber(''); setExpiry(''); setCvv('');
     }
   };

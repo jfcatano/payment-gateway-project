@@ -99,6 +99,7 @@ La aplicación implementa un proceso de onboarding de 5 pasos para la compra de 
         ```env
         VITE_PAYMENT_GATEWAY_PUBLIC_KEY=
         VITE_PAYMENT_GATEWAY_REDIRECT_URL=http://localhost:5173/payment-success
+        VITE_PAYMENT_GATEWAY_CHECKOUT_URL=agregar_aqui_checkout_url_payment_gateway
         VITE_API_URL=http://localhost:3000/api
         # Las variables de entorno predeterminadas ya se encuentran en .env.example, debe añadirse manualmente todas las keys por motivos de seguridad.
         ```
