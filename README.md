@@ -13,7 +13,6 @@ Este proyecto es una aplicación fullstack desarrollada como parte de un test de
 -   [Ejecución del Proyecto](#ejecución-del-proyecto)
 -   [Documentación de la API](#documentación-de-la-api)
 -   [Diseño de la Base de Datos](#diseño-de-la-base-de-datos)
--   [Testing](#testing)
 -   [Despliegue](#despliegue)
 -   [Estructura del Proyecto](#estructura-del-proyecto)
 -   [Consideraciones Adicionales](#consideraciones-adicionales)
@@ -155,3 +154,80 @@ La documentación detallada de los endpoints de la API se encuentra disponible e
 La API incluye endpoints para gestionar:
 * Productos (creación y lectura)
 * Transacciones (creación y lectura)
+
+## Diseño de la Base de Datos
+
+* **Definiciones de Modelos (Prisma):**
+    ```prisma
+    model Product {
+    id                 String               @id @default(uuid())
+    name               String
+    description        String
+    price              Float
+    stock              Int
+    imageUrl           String?
+    createdAt          DateTime             @default(now())
+    updatedAt          DateTime             @updatedAt
+    TransactionProduct TransactionProduct[]
+    }
+
+    model Customer {
+    id           String        @id @default(uuid())
+    name         String
+    email        String        @unique
+    addressLine1 String
+    addressLine2 String?
+    city         String
+    country      String
+    postalCode   String?
+    createdAt    DateTime      @default(now())
+    updatedAt    DateTime      @updatedAt
+    transactions Transaction[]
+    }
+
+    model Transaction {
+    id                   String            @id @default(uuid())
+    internal_reference   String            @unique @default(uuid())
+    transaction_id       String?           @unique
+    status               TransactionStatus @default(PENDING)
+    amount               Float
+    base_fee             Float
+    delivery_fee         Float 
+    payment_method_token String?
+    procesor_response    Json?
+    error_message        String?
+
+    customer_id String
+    customer    Customer @relation(fields: [customer_id], references: [id])
+
+    createdAt           DateTime             @default(now())
+    updatedAt           DateTime             @updatedAt
+    transactionProducts TransactionProduct[]
+    }
+
+    model TransactionProduct {
+    id                Int    @id @default(autoincrement())
+    transaction_id    String
+    product_id        String
+    name              String
+    price             Float
+    quantity          Int
+    stock_at_purchase Int?
+
+    transaction Transaction @relation(fields: [transaction_id], references: [id])
+    products    Product     @relation(fields: [product_id], references: [id])
+    }
+
+    enum TransactionStatus {
+    PENDING
+    APPROVED
+    DECLINED
+    ERROR
+    }
+    ```
+
+* **Modelos y Relaciones**
+
+- Un **Customer** puede tener múltiples **Transaction**s.
+- Una **Transaction** puede tener múltiples **TransactionProduct**s.
+- Cada **TransactionProduct** guarda una copia del nombre, precio y cantidad del producto comprado.
