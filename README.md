@@ -2,6 +2,9 @@
 
 Este proyecto es una aplicación fullstack desarrollada como parte de un test de desarrollo, simulando un flujo de compra de productos con integración de pagos a través de un procesador de pagos. La aplicación permite a los usuarios ver productos, añadirlos al carrito, ingresar datos de pago y envío, ver un resumen y completar (simuladamente usando modo de pruebas) la transacción.
 
+- El frontend es accesible a través de https://payment-gateway-project-frontend.vercel.app/
+- El backend es accesible a través de https://payment-gateway-project-backend.vercel.app/api/v1/
+
 ## Tabla de Contenidos
 
 -   [Descripción General](#descripción-general)
