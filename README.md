@@ -152,7 +152,7 @@ La aplicación implementa un proceso de onboarding de 5 pasos para la compra de 
 
 La documentación detallada de los endpoints de la API se encuentra disponible en:
 
-* **Documentación aún no disponible.**
+* [Documentación de la API en Postman (Click aquí)](https://documenter.getpostman.com/view/31017222/2sB2ca6zhg)
 
 La API incluye endpoints para gestionar:
 * Productos (creación y lectura)
