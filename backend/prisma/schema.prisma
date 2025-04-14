@@ -18,7 +18,7 @@ model Product {
   id                 String               @id @default(uuid())
   name               String
   description        String
-  price              Float // Consider using Decimal for money: https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#decimal
+  price              Float
   stock              Int
   imageUrl           String?
   createdAt          DateTime             @default(now())
