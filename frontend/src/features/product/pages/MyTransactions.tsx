@@ -7,12 +7,20 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 
+interface Product {
+  product_id: string;
+  name: string;
+  quantity: number;
+  price: number;
+}
+
 interface Transaction {
   id: string;
-  date: string;
+  createdAt: string;
   description: string;
   amount: number;
   status: string;
+  products: Product[];
 }
 
 interface ApiResponse {
@@ -120,11 +128,19 @@ const MyTransactionsPage: React.FC = () => {
                     {transactions.map((tx) => (
                       <TableRow key={tx.id}>
                         <TableCell className="font-medium">{tx.id}</TableCell>
-                        <TableCell>{new Date(tx.date).toLocaleDateString()}</TableCell> {/* Date formatting */}
-                        <TableCell>{tx.description}</TableCell>
+                        <TableCell>{new Date(tx.createdAt).toLocaleDateString()}</TableCell> {/* Date formatting */}
+                        {/* List all products for this transaction */}
+                        <TableCell>
+                          {tx.products.map((product, index) => (
+                            <div key={product.product_id}>
+                              {product.quantity} x {product.name}
+                              {index < tx.products.length - 1 && <br />} {/* Add line breaks between each product */}
+                            </div>
+                          ))}
+                        </TableCell>
                         <TableCell>{tx.status}</TableCell>
                         <TableCell className={`text-right ${tx.amount < 0 ? 'text-red-600' : 'text-green-600'}`}>
-                          {tx.amount.toLocaleString(undefined, { style: 'currency', currency: 'USD' })} {/* Format as currency */}
+                          {tx.amount.toLocaleString(undefined, { style: 'currency', currency: 'COP' })} {/* Format as currency */}
                         </TableCell>
                       </TableRow>
                     ))}
