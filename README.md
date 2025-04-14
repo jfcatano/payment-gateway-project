@@ -105,7 +105,7 @@ La aplicación implementa un proceso de onboarding de 5 pasos para la compra de 
         ```
     * **Backend:** Crea un archivo `.env` en el directorio raíz del backend basado en el archivo `.env.example`. Asegúrate de incluir:
         ```env
-        DATABASE_URL=postgresql://postgres:postgres@localhost:5432/fullstack_test?schema=public
+        DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:5432/fullstack_test?schema=public
         PAYMENT_GATEWAY_API_URL=url_de_api_sandbox_del_payment_gateway
         PAYMENT_GATEWAY_PUBLIC_KEY=
         PAYMENT_GATEWAY_PRIVATE_KEY=

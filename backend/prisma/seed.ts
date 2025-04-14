@@ -14,27 +14,27 @@ async function main() {
   // Crea productos dummy
   await prisma.product.create({
     data: {
-      name: 'Awesome Gadget',
-      description: 'The most awesome gadget you will ever need.',
-      price: 99.99,
+      name: 'iPhone 16 Pro',
+      description: 'The most advanced iPhone actually.',
+      price: 5000000,
       stock: 50,
     },
   });
 
    await prisma.product.create({
     data: {
-      name: 'Super Widget',
-      description: 'A widget that surpasses all others.',
-      price: 45.50,
+      name: 'Air Pods Pro 3',
+      description: 'The best sound quality in the market.',
+      price: 750000,
       stock: 120,
     },
   });
 
    await prisma.product.create({
     data: {
-      name: 'Hyper Component',
-      description: 'Component for advanced users.',
-      price: 199.00,
+      name: 'Samsung Galaxy S24',
+      description: 'The best Android phone in the market.',
+      price: 6299000,
       stock: 15,
     },
   });
