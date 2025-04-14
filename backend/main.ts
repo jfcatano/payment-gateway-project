@@ -8,8 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   app.enableCors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: ['https://payment-gateway-project-frontend.vercel.app', 'http://localhost:3000'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     preflightContinue: false,
   });
   
@@ -25,7 +25,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v1');
 
-  // Swagger setup
+  // Swagger setup (in this case I prefer to use Postman, but I left the Swagger configuration here)
   const config = new DocumentBuilder()
     .setTitle('Test API')
     .setDescription('API for managing small e-commerce')
