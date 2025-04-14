@@ -70,8 +70,8 @@ const ProductCatalogPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-1 container mx-auto mt-4">
-        {/* Sidebar (Podrías hacerlo condicional para móviles con un botón que lo muestre/oculte) */}
-        <div className="hidden md:block"> {/* Ocultar en pantallas pequeñas */}
+        {/* Sidebar */}
+        <div className="hidden md:block"> {/* Hide on small screens */}
             <CategoryFilterSidebar />
         </div>
 
