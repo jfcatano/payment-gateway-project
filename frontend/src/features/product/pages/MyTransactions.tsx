@@ -34,6 +34,7 @@ const MyTransactionsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState<boolean>(false);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
   // Function to fetch transactions from the API
   const handleFetchTransactions = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,7 +49,7 @@ const MyTransactionsPage: React.FC = () => {
     setTransactions([]); // Clear previous transactions
     setHasSearched(true); // Mark that a search attempt has been made
 
-    const apiUrl = `http://localhost:3000/api/v1/transactions/${email}`;
+    const apiUrl = `${API_URL}/v1/transactions/${email}`;
 
     try {
       console.log(`Getting transactions from: ${apiUrl}`);
