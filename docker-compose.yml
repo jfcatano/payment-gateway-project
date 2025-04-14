@@ -1,0 +1,41 @@
+services:
+    api:
+        build: ./backend
+        container_name: api
+        ports:
+            - "3000:3000"
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+        env_file:
+            - ./backend/.env
+        restart: unless-stopped
+
+    frontend:
+        build: ./frontend
+        container_name: frontend
+        ports:
+            - "5173:5173"
+        env_file:
+            - ./frontend/.env
+        restart: unless-stopped
+
+    postgres:
+        image: postgres:14-alpine
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=fullstack_test
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - app-network
+        restart: unless-stopped
+
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    postgres_data:
