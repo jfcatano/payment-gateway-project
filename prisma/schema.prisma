@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                 String               @id @default(uuid())
+  name               String
+  description        String
+  price              Float // Consider using Decimal for money: https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#decimal
+  stock              Int
+  imageUrl           String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  TransactionProduct TransactionProduct[]
+}
+
+model Customer {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  country      String
+  postalCode   String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+}
+
+model Transaction {
+  id                   String            @id @default(uuid())
+  internal_reference   String            @unique @default(uuid())
+  transaction_id       String?           @unique // Payment Gateway ID
+  status               TransactionStatus @default(PENDING)
+  amount               Float // Total amount
+  base_fee             Float
+  delivery_fee         Float 
+  payment_method_token String? // Payment method token or name/ID
+  procesor_response    Json? // Payment gateway response
+  error_message        String? // Error message from the payment processor if it fails
+
+  customer_id String
+  customer    Customer @relation(fields: [customer_id], references: [id])
+
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  transactionProducts TransactionProduct[]
+}
+
+model TransactionProduct {
+  id                Int    @id @default(autoincrement())
+  transaction_id    String
+  product_id        String // Product ID
+  name              String
+  price             Float
+  quantity          Int
+  stock_at_purchase Int? // optional, not functional at the moment
+
+  transaction Transaction @relation(fields: [transaction_id], references: [id])
+  products    Product     @relation(fields: [product_id], references: [id])
+}
+
+enum TransactionStatus {
+  PENDING
+  APPROVED
+  DECLINED
+  ERROR // Internal error (After or before Payment Gateway processing)
+}
