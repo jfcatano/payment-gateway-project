@@ -8,6 +8,10 @@ COPY . .
 
 RUN npm install
 
+RUN npx prisma generate
+
+RUN npm run seed
+
 EXPOSE 3000
 
 CMD ["npm", "start"]
