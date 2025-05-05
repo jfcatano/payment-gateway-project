@@ -1,5 +1,3 @@
-// src/application/use-cases/handle-payment-gateway-event.use-case.ts
-
 import { Injectable, Inject, BadRequestException, ForbiddenException, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import * as crypto from 'crypto';

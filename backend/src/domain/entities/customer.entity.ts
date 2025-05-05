@@ -1,4 +1,3 @@
-// src/core/domain/entities/product.entity.ts
 export interface CustomerEntity {
     id: string;
     name: string;
