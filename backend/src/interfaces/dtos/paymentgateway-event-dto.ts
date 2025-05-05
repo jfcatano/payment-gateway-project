@@ -1,5 +1,3 @@
-// src/interfaces/dtos/PaymentGateway-event.dto.ts
-
 import { Type } from 'class-transformer';
 import {
   IsString,

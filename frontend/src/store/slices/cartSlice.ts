@@ -98,4 +98,12 @@ export const selectCartTotal = createSelector(
   }
 );
 
+export const selectTotalTax = createSelector(
+  [selectCartTotal],
+  (total) => {
+    const taxRate = 0.19; // Default tax rate of 19%
+    return total * taxRate;
+  }
+);
+
 export default cartSlice.reducer;

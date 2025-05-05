@@ -1,4 +1,3 @@
-// src/core/domain/entities/product.entity.ts
 export interface ProductEntity {
     id: string;
     internalRef: string;

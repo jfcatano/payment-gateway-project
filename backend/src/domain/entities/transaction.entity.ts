@@ -1,6 +1,3 @@
-// src/core/domain/entities/transaction.entity.ts
-// import { TransactionStatus } from 'src/interfaces/dtos/create-transaction.dto';
-
 import { ProductDTO } from "src/interfaces/dtos/product.dto";
 
 export class Transaction {
