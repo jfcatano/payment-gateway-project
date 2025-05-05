@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { Result, ok, err } from 'src/shared/utils/result.util'
 import { Transaction } from 'src/domain/entities/transaction.entity'
 import { TransactionRepositoryPort } from 'src/domain/ports/transaction.repository.port'
-import { DatabaseError } from 'src/shared/utils/result.util' // <- usando tu clase personalizada
+import { DatabaseError } from 'src/shared/utils/result.util'
 
 @Injectable()
 export class GetTransactionsByUserEmailUseCase {

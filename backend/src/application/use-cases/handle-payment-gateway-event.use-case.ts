@@ -1,9 +1,8 @@
 import { Injectable, Inject, BadRequestException, ForbiddenException, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
-import { ConfigService, ConfigType } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import * as crypto from 'crypto';
 import { TransactionRepositoryPort } from '../../domain/ports/transaction.repository.port';
 import { PaymentGatewayEventDto } from 'src/interfaces/dtos/paymentgateway-event-dto';
-import configuration from '../../infrastructure/config/configuration';
 import { TransactionStatus } from '@prisma/client';
 import { ProductRepositoryPort } from 'src/domain/ports/product.repository.port';
 
@@ -103,7 +102,6 @@ export class HandlePaymentGatewayEventUseCase {
                     this.logger.log(`Transaction ${reference} has non-approved status: ${transactionStatus}. Restoring stock.`);
                     
                     try {
-                        // Obtener la transacción con su información de productos
                         // Get the transaction with its product information
                         const transaction = await this.transactionRepository.findByReference(reference);
                         this.logger.log(transaction)

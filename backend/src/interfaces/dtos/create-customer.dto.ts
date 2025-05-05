@@ -1,4 +1,3 @@
-// src/modules/customer/dto/create-customer.dto.ts
 import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateCustomerDto {
