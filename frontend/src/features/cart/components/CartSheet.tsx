@@ -17,6 +17,7 @@ import {
     decreaseItemQuantity,
     increaseItemQuantity,
     removeItem,
+    selectTotalTax,
 } from "@/store/slices/cartSlice";
 import { Minus, Plus, Trash2 } from "lucide-react";
 
@@ -33,6 +34,7 @@ const CartSheet: React.FC<CartSheetProps> = ({ onProceedToCheckout }) => {
     const dispatch: AppDispatch = useDispatch();
     const cartItems = useAppSelector(selectDetailedCartItems);
     const cartTotal = useAppSelector(selectCartTotal);
+    const totalTaxes = useAppSelector(selectTotalTax)
 
     // Money formatter
     const formatCurrency = (value: number) =>
@@ -168,6 +170,10 @@ const CartSheet: React.FC<CartSheetProps> = ({ onProceedToCheckout }) => {
                     {/* Footer with the total and checkout button */}
                     <SheetFooter>
                         <div className="flex flex-col w-full gap-4">
+                            <div className="flex justify-between font-semibold text-lg">
+                                <span>IVA (19%):</span>
+                                <span>{formatCurrency(totalTaxes)}</span>
+                            </div>
                             <div className="flex justify-between font-semibold text-lg">
                                 <span>Subtotal:</span>
                                 <span>{formatCurrency(cartTotal)}</span>

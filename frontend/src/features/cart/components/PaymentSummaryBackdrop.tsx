@@ -15,6 +15,7 @@ import { RootState } from "@/store/store";
 import {
     selectCartTotal,
     selectDetailedCartItems,
+    selectTotalTax,
 } from "@/store/slices/cartSlice";
 import { DeliveryInfo, CreditCardInfo } from "@/components/global/Layout";
 
@@ -29,7 +30,7 @@ interface PaymentSummaryProps {
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // Default values for fees (This can be from config or backend)
-const BASE_FEE = 1000;
+// const BASE_FEE = 1000;
 const SHIPPING_FEE = 5000;
 
 const PaymentSummaryBackdrop: React.FC<PaymentSummaryProps> = ({
@@ -39,8 +40,9 @@ const PaymentSummaryBackdrop: React.FC<PaymentSummaryProps> = ({
     ccInfo,
 }) => {
     const cartTotal = useAppSelector(selectCartTotal);
+    const cartTaxes = useAppSelector(selectTotalTax);
     const cartItems = useAppSelector(selectDetailedCartItems);
-    const grandTotal = cartTotal + BASE_FEE + SHIPPING_FEE;
+    const grandTotal = cartTotal + cartTaxes + SHIPPING_FEE;
 
     const PUBLIC_KEY = import.meta.env.VITE_PAYMENT_GATEWAY_PUBLIC_KEY;
     const REDIRECT_URL = import.meta.env.VITE_PAYMENT_GATEWAY_REDIRECT_URL;
@@ -169,7 +171,7 @@ const PaymentSummaryBackdrop: React.FC<PaymentSummaryProps> = ({
                         </div>
                         <div className="flex justify-between">
                             <span>Base fee:</span>
-                            <span>{formatCurrency(BASE_FEE)}</span>
+                            <span>{formatCurrency(cartTaxes)}</span>
                         </div>
                         <div className="flex justify-between">
                             <span>Shipping fee:</span>
