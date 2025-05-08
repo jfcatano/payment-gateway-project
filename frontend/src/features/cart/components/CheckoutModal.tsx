@@ -54,7 +54,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
       // Basic validation for credit card number (length and only digits)
       if (!/^\d{15,16}$/.test(ccNumber.replace(/\s/g, ''))) newErrors.ccNumber = 'Card number is invalid (15-16 digits).';
       // Basic validation for expiry date (MM/YY)
-      if (!/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(expiry)) newErrors.expiry = 'Invaid expiry date (MM/YY).';
+      if (!/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(expiry)) newErrors.expiry = 'Invalid expiry date (MM/YY).';
       // Basic validation for CVV (3-4 digits)
       if (!/^\d{3,4}$/.test(cvv)) newErrors.cvv = 'Invalid CVV (3-4 digits).';
 
@@ -105,23 +105,23 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                      <div className="space-y-2">
                         <Label htmlFor="name">Full Name</Label>
-                        <Input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Your name" required />
+                        <Input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Your name" />
                         {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
                      </div>
                      
                      <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
-                        <Input id="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email" required />
+                        <Input id="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email"  />
                         {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
                      </div>
                     <div className="space-y-2">
                         <Label htmlFor="city">City</Label>
-                        <Input id="city" value={city} onChange={e => setCity(e.target.value)} placeholder="Your city" required />
+                        <Input id="city" value={city} onChange={e => setCity(e.target.value)} placeholder="Your city"  />
                         {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="address">Address</Label>
-                        <Input id="address" value={address} onChange={e => setAddress(e.target.value)} placeholder="Your delivery address" required />
+                        <Input id="address" value={address} onChange={e => setAddress(e.target.value)} placeholder="Your delivery address"  />
                         {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
                     </div>
                  </div>
@@ -142,7 +142,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
                                 onChange={handleCcNumberChange}
                                 placeholder="0000 0000 0000 0000"
                                 maxLength={19} // 16 digits + 3 spaces
-                                required
+                                
                             />
                             {/* Show credit card logo */}
                             <div className="absolute right-3 top-1/2 -translate-y-1/2 text-2xl">
@@ -154,12 +154,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
                      </div>
                     <div className="sm:col-span-2 space-y-2">
                         <Label htmlFor="expiry">Expiration date (MM/AA)</Label>
-                        <Input id="expiry" value={expiry} onChange={handleExpiryChange} placeholder="MM/AA" maxLength={5} required />
+                        <Input id="expiry" value={expiry} onChange={handleExpiryChange} placeholder="MM/AA" maxLength={5}  />
                         {errors.expiry && <p className="text-red-500 text-xs">{errors.expiry}</p>}
                     </div>
                     <div className="sm:col-span-2 space-y-2">
                         <Label htmlFor="cvv">CVV</Label>
-                        <Input id="cvv" value={cvv} onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))} placeholder="123" maxLength={4} required />
+                        <Input id="cvv" value={cvv} onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))} placeholder="123" maxLength={4}  />
                         {errors.cvv && <p className="text-red-500 text-xs">{errors.cvv}</p>}
                     </div>
                  </div>

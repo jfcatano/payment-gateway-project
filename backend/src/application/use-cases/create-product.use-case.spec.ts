@@ -26,7 +26,7 @@ describe('CreateProductUseCase', () => {
 
     expect(result.isErr()).toBe(true)
     if (result.isErr()) {
-      expect(result.error.message).toBe('Precio o stock inválido')
+      expect(result.error.message).toBe('Price or invalid stock')
     }
   })
 
@@ -42,7 +42,7 @@ describe('CreateProductUseCase', () => {
 
     expect(result.isErr()).toBe(true)
     if (result.isErr()) {
-      expect(result.error.message).toBe('Precio o stock inválido')
+      expect(result.error.message).toBe('Price or invalid stock')
     }
   })
 
@@ -76,7 +76,7 @@ describe('CreateProductUseCase', () => {
 
     expect(result.isErr()).toBe(true)
     if (result.isErr()) {
-      expect(result.error.message).toBe('Error creando producto')
+      expect(result.error.message).toBe('Error creating product')
     }
   })
 })
