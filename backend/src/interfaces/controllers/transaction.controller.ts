@@ -39,6 +39,6 @@ export class TransactionController {
         } catch (error) {
 
         }
-        return { message: 'Evento received' };
+        return { message: 'Event received' };
     }
 }

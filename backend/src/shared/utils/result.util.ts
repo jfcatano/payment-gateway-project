@@ -1,6 +1,6 @@
-import { Result, Ok, Err, ResultAsync, ok, err } from 'neverthrow'
+import { Result, Ok, Err, ResultAsync, okAsync, errAsync, ok, err } from 'neverthrow'
 
-export { Result, Ok, Err, ResultAsync, ok, err }
+export { Result, Ok, Err, ResultAsync, okAsync, errAsync, ok, err }
 
 // Base error class for the application
 export abstract class AppError extends Error {
