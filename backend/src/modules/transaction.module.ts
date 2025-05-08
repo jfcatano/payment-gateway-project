@@ -5,7 +5,7 @@ import { PrismaProductRepository } from 'src/infrastructure/adapters/product.rep
 import { TransactionRepositoryPort } from 'src/domain/ports/transaction.repository.port'
 import { PrismaService } from 'src/infrastructure/prisma/prisma.service'
 import { PrismaTransactionRepository } from 'src/infrastructure/adapters/transaction.repository'
-import { GetTransactionsByUserEmailUseCase } from 'src/application/use-cases/find-transaction-by-user-email.case'
+import { GetTransactionsByUserEmailUseCase } from 'src/application/use-cases/find-transaction-by-user-email.use-case'
 import { HandlePaymentGatewayEventUseCase } from 'src/application/use-cases/handle-payment-gateway-event.use-case'
 import { ConfigModule } from '@nestjs/config'
 import { ProductModule } from './product.module'

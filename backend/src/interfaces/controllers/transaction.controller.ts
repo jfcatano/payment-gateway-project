@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, Param, Logger } from "@nestjs/common";
 import { CreateTransactionUseCase } from "../../application/use-cases/create-transaction.use-case";
 import { CreateTransactionDto } from "../dtos/create-transaction.dto";
-import { GetTransactionsByUserEmailUseCase } from "src/application/use-cases/find-transaction-by-user-email.case";
+import { GetTransactionsByUserEmailUseCase } from "src/application/use-cases/find-transaction-by-user-email.use-case";
 import { HandlePaymentGatewayEventUseCase } from "src/application/use-cases/handle-payment-gateway-event.use-case";
 
 @Controller('transactions')
@@ -39,6 +39,6 @@ export class TransactionController {
         } catch (error) {
 
         }
-        return { message: 'Evento received' };
+        return { message: 'Event received' };
     }
 }
