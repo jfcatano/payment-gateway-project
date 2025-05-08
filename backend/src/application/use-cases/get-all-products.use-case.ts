@@ -12,7 +12,7 @@ export class GetAllProductsUseCase {
       const products = await this.repo.findAll()
       return ok(products)
     } catch (error) {
-      return err(new Error('Error obteniendo productos'))
+      return err(new Error('Error getting products'))
     }
   }
 }

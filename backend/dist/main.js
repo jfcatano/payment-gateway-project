@@ -8,7 +8,7 @@ const helmet_1 = require("helmet");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
-        origin: ['https://payment-gateway-project-frontend.vercel.app', 'http://localhost:3000'],
+        origin: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
         preflightContinue: false,
     });
