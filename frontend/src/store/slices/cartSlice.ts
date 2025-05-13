@@ -69,7 +69,7 @@ export const {
 } = cartSlice.actions;
 
 // --- Selectors ---
-export const selectCartItems = (state: RootState) => state.cart.items;
+export const selectCartItems = (state: RootState) => state.cart?.items || {};
 
 export const selectCartItemCount = (state: RootState): number => {
   return Object.values(state.cart.items).reduce((total, item) => total + item.quantity, 0);

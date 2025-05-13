@@ -142,7 +142,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onOpenChange, onS
                                 onChange={handleCcNumberChange}
                                 placeholder="0000 0000 0000 0000"
                                 maxLength={19} // 16 digits + 3 spaces
-                                
+                                // required (deleted due to problems with the submit and tests, it's better to validate using zod and handleSubmit function)
                             />
                             {/* Show credit card logo */}
                             <div className="absolute right-3 top-1/2 -translate-y-1/2 text-2xl">

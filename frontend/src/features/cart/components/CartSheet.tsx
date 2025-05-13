@@ -118,6 +118,7 @@ const CartSheet: React.FC<CartSheetProps> = ({ onProceedToCheckout }) => {
                                         {/* Product quantity controllers */}
                                         <div className="flex items-center gap-2 mt-1">
                                             <Button
+                                                data-testid='minus-button'
                                                 variant="outline"
                                                 size="icon"
                                                 className="h-7 w-7"
@@ -134,6 +135,7 @@ const CartSheet: React.FC<CartSheetProps> = ({ onProceedToCheckout }) => {
                                                 {item.quantity}
                                             </span>
                                             <Button
+                                                data-testid='plus-button'
                                                 variant="outline"
                                                 size="icon"
                                                 className="h-7 w-7"
@@ -153,6 +155,7 @@ const CartSheet: React.FC<CartSheetProps> = ({ onProceedToCheckout }) => {
                                     </div>
                                     {/* Button to delete products */}
                                     <Button
+                                        data-testid="delete-button"
                                         variant="ghost"
                                         size="icon"
                                         className="text-muted-foreground hover:text-destructive"
